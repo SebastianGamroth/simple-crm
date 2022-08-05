@@ -9,6 +9,12 @@
 
 .menu-icon {
     cursor: pointer;
+
+    img{
+        width: 24px;
+        height: 24px;
+        filter: invert(1);
+    }
 }
 
 .sidenav {
@@ -34,6 +40,11 @@ mat-toolbar-row {
     list-style-type: none;
     padding: 0px;
     margin: 0px;
+
+    img {
+        width: 24px;
+        height: 24px;
+    }
 
     li {
         padding-left: 16px;
