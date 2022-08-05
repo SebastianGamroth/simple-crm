@@ -25,6 +25,7 @@ import { environment } from 'src/environments/environment';
 // import { provideAuth, getAuth } from '@angular/fire/auth';
 // import { provideDatabase, getDatabase } from '@angular/fire/database';
 // import { provideFirestore, getFirestore } from '@angular/fire/firestore';
+import {MatProgressBarModule} from '@angular/material/progress-bar';
 
 @NgModule({
   declarations: [
@@ -52,7 +53,8 @@ import { environment } from 'src/environments/environment';
     // provideAuth(() => getAuth()),
     // provideDatabase(() => getDatabase()),
     // provideFirestore(() => getFirestore())
-    AngularFireModule.initializeApp(environment.firebase)
+    AngularFireModule.initializeApp(environment.firebase),
+    MatProgressBarModule
   ],
   providers: [],
   bootstrap: [AppComponent]
