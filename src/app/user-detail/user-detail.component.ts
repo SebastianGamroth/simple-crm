@@ -33,12 +33,13 @@ export class UserDetailComponent implements OnInit {
   }
 
   editUserDetail() {
-    this.dialog.open(DialogEditUserComponent);
+    const dialog = this.dialog.open(DialogEditUserComponent);
+    dialog.componentInstance.user = this.user;
   }
 
   /**
-   * const dialog bekommt den wert von DialogEditAddressComponent
-   * DialogEditAddressComponent.user bekommt den Wert von this.user
+   * const dialog get value from DialogEditAddressComponent
+   * DialogEditAddressComponent.user get value from this.user
    */
   editMenu() {
     const dialog = this.dialog.open(DialogEditAddressComponent);
