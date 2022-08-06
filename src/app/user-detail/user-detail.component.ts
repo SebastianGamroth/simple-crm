@@ -32,18 +32,26 @@ export class UserDetailComponent implements OnInit {
     })
   }
 
+  /**
+   * const dialog get value from DialogEditAddressComponent
+   * this.user.toJSON() <- old Date from this.user in JSON (copy from old user)
+   * new User <- create new User with old Date user
+   * DialogEditUserComponent.user get new User with old Date
+   */
   editUserDetail() {
     const dialog = this.dialog.open(DialogEditUserComponent);
-    dialog.componentInstance.user = this.user;
+    dialog.componentInstance.user = new User(this.user.toJSON());
   }
 
   /**
    * const dialog get value from DialogEditAddressComponent
-   * DialogEditAddressComponent.user get value from this.user
+   * this.user.toJSON() <- old Date from this.user in JSON (copy from old user)
+   * new User <- create new User with old Date user
+   * DialogEditAddressComponent.user get new User with old Date
    */
   editMenu() {
     const dialog = this.dialog.open(DialogEditAddressComponent);
-    dialog.componentInstance.user = this.user;
+    dialog.componentInstance.user = new User(this.user.toJSON());
   }
 
 }
