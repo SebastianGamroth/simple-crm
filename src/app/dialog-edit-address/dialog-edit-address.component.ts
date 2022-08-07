@@ -9,7 +9,7 @@ import { User } from 'src/models/users.class';
   styleUrls: ['./dialog-edit-address.component.scss']
 })
 export class DialogEditAddressComponent implements OnInit {
-  user: User;
+  user: User = new User(); // new User() is empty for ng test
   userID: string;
   loading = false;
 

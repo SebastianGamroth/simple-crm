@@ -13,7 +13,7 @@ import { DialogEditUserComponent } from '../dialog-edit-user/dialog-edit-user.co
 })
 export class UserDetailComponent implements OnInit {
   userId = '';
-  user: User = new User();
+  user: User = new User();  // new User() is empty for ng test
 
   constructor(private route: ActivatedRoute,
     private firestore: AngularFirestore,
@@ -26,10 +26,12 @@ export class UserDetailComponent implements OnInit {
   }
 
   getUser() {
-    this.firestore.collection('users').doc(this.userId).valueChanges().subscribe((user: any) => {
-      this.user = new User(user);
-      console.log(this.user)
-    })
+    if (this.userId) {
+      this.firestore.collection('users').doc(this.userId).valueChanges().subscribe((user: any) => {
+        this.user = new User(user);
+        console.log(this.user)
+      })
+    }
   }
 
   /**

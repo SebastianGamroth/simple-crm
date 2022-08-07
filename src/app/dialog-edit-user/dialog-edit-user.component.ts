@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { MatDialogRef } from '@angular/material/dialog';
-import { flatMap } from 'rxjs';
 import { User } from 'src/models/users.class';
 
 @Component({
@@ -10,7 +9,7 @@ import { User } from 'src/models/users.class';
   styleUrls: ['./dialog-edit-user.component.scss']
 })
 export class DialogEditUserComponent implements OnInit {
-  user: User;
+  user: User = new User();  // new User() is empty for ng test
   userID: string;
   loading = false;
   birthDate: any = Date;
@@ -27,14 +26,18 @@ export class DialogEditUserComponent implements OnInit {
    */
   saveUser() {
     this.loading = true;
-    this.firestore
-      .collection('users')
-      .doc(this.userID)
-      .update(this.user.toJSON())
-      .then(() => {
-        this.loading = false;
-        this.dialogRef.close();
-      });
+    if (this.userID) {
+      this.firestore
+        .collection('users')
+        .doc(this.userID)
+        .update(this.user.toJSON())
+        .then(() => {
+          this.loading = false;
+          this.dialogRef.close();
+        });
+    } else {
+      // Throw Error
+    }
   }
 
 }
